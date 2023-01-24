@@ -104,7 +104,7 @@ class queue{
             if(empty()) throw std::runtime_error("Error: Queue is empty");
             return _q->data;
         }
-        unsigned int size()
+        unsigned int size() const
         {
             return _size;
         }
@@ -128,5 +128,48 @@ class queue{
                 tmp = tmp->next;
             return  tmp->data;
         }
+        friend bool operator==(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            if(lhs.size() != rhs.size()) return false;
+            node *left = lhs._q;
+            node *right = rhs._q;
+            while(left != nullptr) 
+            {
+                if(left->data != right->data) return false;
+                left = left->next;
+                right = right->next;
+            }
+            return true;   
+        }
+        friend bool operator<(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            if(lhs.size() != rhs.size()) return false;
+            node *left = lhs._q;
+            node *right = rhs._q;
+            while(left != nullptr) 
+            {
+                if(left->data >= right->data) return false;
+                left = left->next;
+                right = right->next;
+            }
+            return true;
+        }
+        friend bool operator!=(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            return !(lhs == rhs);
+        }
+        friend bool operator>(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            return !(lhs < rhs);
+        }
+        friend bool operator>=(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            return ((lhs > rhs) ||(lhs == rhs));
+        }
+        friend bool operator<=(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            return ((lhs < rhs) ||(lhs == rhs));
+        }
+
 };
 #endif
