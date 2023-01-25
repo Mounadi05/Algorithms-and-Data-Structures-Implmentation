@@ -9,9 +9,9 @@ class queue{
         class node
         {
             public :
-             T data;
-             node *next;
-             node(T &data):data(data),next(nullptr){}
+                T data;
+                node *next;
+                node(T &data):data(data),next(nullptr){}
         };
         node * _q;
         unsigned int _size;
@@ -141,18 +141,18 @@ class queue{
             }
             return true;   
         }
-        friend bool operator<(const queue<T> &lhs, const queue<T> &rhs)
-        {
-            if(lhs.size() != rhs.size()) return false;
+         friend bool operator<(const queue<T> &lhs, const queue<T> &rhs) {
+            if (lhs.size() < rhs.size()) return true;
             node *left = lhs._q;
             node *right = rhs._q;
-            while(left != nullptr) 
+            while (left != nullptr && right != nullptr) 
             {
-                if(left->data >= right->data) return false;
+                if (left->data < right->data) return true;
+                if (right->data < left->data) return false;
                 left = left->next;
                 right = right->next;
             }
-            return true;
+            return false;
         }
         friend bool operator!=(const queue<T> &lhs, const queue<T> &rhs)
         {

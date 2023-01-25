@@ -1,5 +1,5 @@
-#ifndef QUEUE_HPP
-#define QUEUE_HPP
+#ifndef CONST_QUEUE_HPP
+#define CONST_QUEUE_HPP
 #include <iostream>
 
 template <typename T>
@@ -9,7 +9,7 @@ class queue{
         class node
         {
             public :
-                const  T &data;
+                const T &data;
                 node *next;
                 node(const T &data):data(data),next(nullptr){}
         };
@@ -99,7 +99,7 @@ class queue{
             if(empty()) throw std::runtime_error("Error: Queue is empty");
             return  _q->data;
         }
-        unsigned int size()
+        unsigned int size() const
         {
             return _size;
         }
@@ -114,6 +114,49 @@ class queue{
             while(tmp != nullptr && tmp->next != nullptr)
                 tmp = tmp->next;
             return  tmp->data;
-        }   
+        }
+        friend bool operator<(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            if (lhs.size() < rhs.size()) return true;
+            node *r = rhs._q;
+            node *l = lhs._q;
+            while(r != nullptr && l != nullptr)
+            {
+                if (l->data < r->data) return true;
+                if (r->data < l->data) return false;
+                l = l->next;
+                r = r->next;
+            }
+            return false;
+        }
+        friend bool operator==(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            if (lhs.size() != rhs.size()) return false;
+            node *r = rhs._q;
+            node *l = lhs._q;
+            while(r != nullptr && l != nullptr)
+            {
+                if (l->data != r->data) return false;
+                l = l->next;
+                r = r->next;
+            }
+            return true;
+        }
+        friend bool operator>(const queue<T> &lhs , const queue<T> &rhs)
+        {
+            return !(lhs < rhs);      
+        }
+        friend bool operator<=(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            return ((lhs < rhs) || (lhs == rhs));
+        }
+        friend bool operator!=(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            return !(lhs == rhs);
+        }
+        friend bool operator>=(const queue<T> &lhs, const queue<T> &rhs)
+        {
+            return ((lhs > rhs) || (lhs == rhs));
+        }
 };
 #endif
