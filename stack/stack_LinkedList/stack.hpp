@@ -142,7 +142,7 @@ class stack
             }
             return true;   
         }
-         friend bool operator<(const stack<T> &lhs, const stack<T> &rhs) {
+        friend bool operator<(const stack<T> &lhs, const stack<T> &rhs) {
             if (lhs.size() < rhs.size()) return true;
             Node *left = lhs._S;
             Node *right = rhs._S;
