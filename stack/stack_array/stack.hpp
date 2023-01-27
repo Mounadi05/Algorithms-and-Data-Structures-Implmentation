@@ -9,9 +9,10 @@ class stack
 {
     private:
         T* _array;
-        size_t _top;
-        size_t _capacity;
+        int _top;
+        int _capacity;
         Alloc alloc;
+
     public:
         stack(): _top(-1), _capacity(10), _array(nullptr) {
             _array = alloc.allocate(_capacity);
@@ -37,11 +38,11 @@ class stack
         }
         ~stack()
         {
-            alloc.deallocate(&_array[0],_capacity);
+        alloc.deallocate(&_array[0],_capacity);
         }
         int size() const
         {
-             return _top + 1;
+            return _top + 1;
         }
         bool empty()
         {
@@ -64,11 +65,11 @@ class stack
         }
         T & top()
         {
-             return _array[_top];
+            return _array[_top];
         }
         const T & top() const
         {
-             return _array[_top];
+            return _array[_top];
         }
         void pop()
         {
