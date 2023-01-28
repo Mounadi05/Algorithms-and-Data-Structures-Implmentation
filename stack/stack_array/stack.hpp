@@ -38,7 +38,7 @@ class stack
         }
         ~stack()
         {
-        alloc.deallocate(&_array[0],_capacity);
+            alloc.deallocate(&_array[0],_capacity);
         }
         int size() const
         {
