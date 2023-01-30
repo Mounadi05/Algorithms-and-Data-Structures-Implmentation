@@ -13,13 +13,13 @@ struct TreeNode
 };
  
  
- // iterative
-void  preorderIterative(TreeNode* root)
+// iterative with stack
+void  preorderIterative1(TreeNode* root)
 {
     std::stack<TreeNode*> tmp;
     if (!root) return ;
     tmp.push(root);
-     while(!tmp.empty())
+    while(!tmp.empty())
     {
         root = tmp.top();
         tmp.pop();
@@ -28,6 +28,23 @@ void  preorderIterative(TreeNode* root)
         if(root->left) tmp.push(root->left);
     }
  }
+  // iterative
+void  preorderIterative2(TreeNode* root)
+{
+    std::vector<TreeNode*> right;
+    while(root)
+    {
+        std::cout << " " << root->val ;
+        if (root->right != nullptr)
+            right.push_back(root->right);
+        root = root->left;
+        if (!right.empty() && !root)
+        {   
+            root = right.back();
+            right.pop_back();
+        }
+    }
+}
 
 //  Recursive 
 void preorderRecursive(TreeNode* root) 
