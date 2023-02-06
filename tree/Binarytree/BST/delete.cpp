@@ -23,12 +23,14 @@ TreeNode* deleteNode(TreeNode* root, int key)
     else if (key > root->val) root->right = deleteNode(root->right, key);
     else
     {
+        // case : no child
         if (!root->right && !root->left)
         {
             delete root;
             root = nullptr;
             return root;
         }
+        // case : one child in left 
         else if (!root->right)
         {
             TreeNode *tmp = root;
@@ -36,6 +38,7 @@ TreeNode* deleteNode(TreeNode* root, int key)
             delete tmp;
             return root;
         }
+         // case : one child in right
         else if (!root->left)
         {
             TreeNode *tmp = root;
@@ -43,6 +46,7 @@ TreeNode* deleteNode(TreeNode* root, int key)
             delete tmp;
             return root;
         }
+        // case : two child
         else
         {
             TreeNode *tmp = FindMin(root->right);
