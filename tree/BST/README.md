@@ -13,7 +13,7 @@ This is an implementation of a binary search tree (BST) in C++. A BST is a type 
 * replace(key, value): replaces the value of the node with the given key with a new value
 * empty(): returns true if the tree is empty, false otherwise
 * size(): returns the number of nodes in the tree
-* clear() :  This function calls 'deleteTree', which is used to recursively deallocate all nodes in the tree when the bst object is destroyed.
+* clear() :  This function calls 'deleteTree', which is used to recursively deallocate all nodes.
 
 ## Implementation Details
 
