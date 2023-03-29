@@ -238,7 +238,7 @@ class bst
                     root->_val = value;
                     return true;
                 }
-                 {
+                {
                     if (key < root->_key)
                         root = root->left;
                     else
@@ -277,6 +277,7 @@ class bst
               if (_root != NULL) 
                 deleteTree(_root);
             _root = NULL;
+            _size = 0;
         }
 };
 
