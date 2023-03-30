@@ -1,6 +1,6 @@
 # Stack Data Structure 
 
-The stack class is a templated class that implements a basic stack data structure in C++. The stack is a last-in, first-out (LIFO) data structure, where elements are inserted and removed from the same end.
+The stack class is a templated class that implements a basic stack data structure in C++ using a singly linked list. The stack is a last-in, first-out (LIFO) data structure, where elements are inserted and removed from the same end.
 
 ## Usage
 ### Instantiating a stack
