@@ -128,3 +128,56 @@ void mergeSort(vector<int> &nums, int left= 0, int right = -1)
         merge(nums, left, mid, right);
     }
 }
+
+struct ListNode {
+      int val;
+      ListNode *next;
+      ListNode() : val(0), next(nullptr) {}
+      ListNode(int x) : val(x), next(nullptr) {}
+      ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+// Function to reverse a singly linked list using recursion.
+// Returns the new head of the reversed list.
+ListNode* reverseList(ListNode* head) 
+{
+    if (!head || !head->next) 
+        return head;
+    ListNode *tmp = reverseList(head->next);
+    head->next->next = head;
+    head->next = NULL;
+    return tmp;
+}
+
+// Function to merge two sorted linked lists into a single sorted list.
+// Returns the head of the merged list.
+ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) 
+{
+        if (!list1) return list2;
+        if (!list2) return list1;
+        if (list1->val < list2->val)
+        {
+            list1->next = mergeTwoLists(list1->next,list2);
+            return list1;
+        }
+        else
+        {
+            list2->next = mergeTwoLists(list1,list2->next);
+            return list2;
+        }
+}
+
+// Function to delete duplicate elements from a sorted linked list using recursion.
+// Returns the head of the list after removing duplicates.
+ListNode* deleteDuplicates(ListNode* head)
+{
+    if (!head)
+        return head;
+    if (head->next && head->val == head->next->val)
+        return (deleteDuplicates(head->next));
+    else
+    {
+        head->next =  deleteDuplicates(head->next);
+        return (head);
+    }
+}
