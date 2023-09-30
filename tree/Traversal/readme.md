@@ -13,7 +13,11 @@ The iterative implementation of postorder traversal uses a stack and a pointer t
 ### Preorder
 The iterative implementation of preorder traversal uses a stack and a vector to keep track of the right child nodes. It prints the value of each node, pushes its right child onto the vector if it exists, and sets the root to its left child. If there are nodes in the vector, it sets the root to the last node in the vector and removes it from the vector. This process continues until the root is null and the vector is empty.
 
+### Level Order
+This implementation demonstrates a breadth-first traversal of a binary tree, also known as a level order traversal. It systematically traverses the tree level by level using a queue to keep track of nodes.
+ 
 ## Recursive Implementations
+
 ### Inorder
 The recursive implementation of inorder traversal first checks if the current node is null. If not, it recursively calls itself on the left child, prints the value of the current node, and recursively calls itself on the right child.
 
